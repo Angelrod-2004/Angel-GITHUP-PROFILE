@@ -1,0 +1,7 @@
+Power BI Amazon Sales Dashboard
+Project Overview: Created a Power BI dashboard to track Amazon sales, featuring cumulative gross sales, profit comparisons, and rolling averages.
+Key Features:
+Tracks cumulative gross sales over time
+Compares profits to the same period last year
+Calculates rolling averages of sales prices
+Visualizes annual profits and forecast future profits
