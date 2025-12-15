@@ -1,0 +1,287 @@
+Executive Summary
+
+BCG Virtual Internship – Customer Churn & Pricing Analytics
+
+This project replicates a real-world BCG analytics engagement in the energy sector, focused on understanding, explaining, and predicting customer churn using pricing, consumption, contract, and behavioral data.
+
+The work follows a full end-to-end analytical pipeline, transforming raw operational datasets into actionable business insights and predictive outputs that could be directly used by commercial, pricing, and retention teams.
+
+
+---
+
+🔍 Business Problem
+
+Energy providers operate in a low-margin, subscription-based market where:
+
+Customers regularly churn at contract renewal,
+
+Pricing structures are complex (peak, off-peak, fixed, variable),
+
+Discounts are used to retain customers at the risk of eroding profitability.
+
+
+The key business questions addressed are:
+
+1. Which customers are most likely to churn?
+
+
+2. How do price changes impact consumption and churn behavior?
+
+
+3. Which contract, pricing, and behavioral signals indicate elevated churn risk?
+
+
+4. How can the business proactively intervene before renewal?
+
+
+
+
+---
+
+📊 Data Sources & Integration
+
+Two primary datasets were integrated:
+
+Client Data: contract details, tenure, consumption, churn labels, channel information.
+
+Pricing Data: time-varying energy tariffs across peak and off-peak periods.
+
+
+These datasets were merged at the customer level, producing a unified analytical table where each record represents a complete customer pricing and behavioral profile.
+
+
+---
+
+🧹 Data Quality & Preprocessing
+
+To ensure analytical robustness:
+
+Duplicate customer records were removed to maintain one observation per customer.
+
+Numerical outliers were detected and removed using the Interquartile Range (IQR) method, reducing distortion from extreme consumption and pricing values.
+
+Numerical features were normalized using Min-Max scaling, ensuring comparability across variables with different units and magnitudes.
+
+
+
+---
+
+🕒 Time-Based Feature Engineering
+
+Raw contract dates were transformed into business-relevant lifecycle metrics, including:
+
+Time between renewal and contract end,
+
+Time from contract activation to last product modification,
+
+Months since activation, renewal, and modification,
+
+Days remaining until renewal,
+
+Binary indicators identifying customers within a critical 60-day renewal window.
+
+
+These features capture contract maturity, inactivity, and renewal proximity, all of which are known drivers of churn in subscription businesses.
+
+
+---
+
+⚙️ Operational Delay & Risk Analysis
+
+Process delays were analyzed by:
+
+Calculating the 90th percentile thresholds for renewal and contract modification delays,
+
+Measuring the proportion of customers exceeding these thresholds.
+
+
+This identifies operational bottlenecks and service delays that correlate with increased churn risk and reduced customer satisfaction.
+
+
+---
+
+📈 Exploratory Data Analysis (EDA)
+
+Churn behavior was explored across multiple dimensions:
+
+Sales channels and contract origins,
+
+Number of active products,
+
+Customer tenure,
+
+Energy consumption and margin metrics,
+
+Forecasted consumption and pricing components.
+
+
+Distributional comparisons between churned and retained customers highlighted structural differences in behavior, enabling hypothesis-driven feature selection.
+
+
+---
+
+💰 Pricing & Economic Analysis
+
+Price Elasticity of Demand
+
+Price sensitivity was quantified using price elasticity, calculated as the ratio of:
+
+Percentage change in consumption demand,
+
+Percentage change in off-peak energy prices over time.
+
+
+This analysis reveals heterogeneous customer responses to price changes, enabling segmentation into price-sensitive and price-resilient groups.
+
+Tariff Structure Analysis
+
+Pricing differences were evaluated across:
+
+Peak vs off-peak periods,
+
+Fixed vs variable tariffs,
+
+Monthly and annual price spreads.
+
+
+Maximum and average price differentials were computed to identify pricing volatility and complexity, which contribute to churn through bill unpredictability.
+
+
+---
+
+🎯 Discount Dependency Risk
+
+A discount dependency metric was engineered by:
+
+Aggregating total forecasted energy costs,
+
+Calculating the ratio of discounts to total cost,
+
+Flagging customers highly reliant on discounts for retention.
+
+
+This identifies high-risk, low-margin customers whose loyalty is driven primarily by pricing incentives.
+
+
+---
+
+🔬 Feature Importance & Selection
+
+Key churn drivers were identified through:
+
+Correlation analysis between numerical features and churn,
+
+Cardinality analysis of categorical variables,
+
+Selection of the most informative features for modeling.
+
+
+This ensures a parsimonious, interpretable feature set aligned with business relevance.
+
+
+---
+
+⚖️ Class Imbalance Handling
+
+Given the natural imbalance between retained and churned customers:
+
+Random Oversampling was applied to the minority churn class,
+
+Preventing model bias toward majority retention outcomes.
+
+
+
+---
+
+🤖 Predictive Modeling
+
+A Random Forest classifier was selected due to its:
+
+Ability to capture non-linear relationships,
+
+Robustness to noise and multicollinearity,
+
+Strong performance on tabular business data.
+
+
+The modeling pipeline includes:
+
+Stratified train-test splitting,
+
+Feature scaling,
+
+Balanced class weighting,
+
+Out-of-sample evaluation.
+
+
+
+---
+
+📏 Model Evaluation
+
+Model performance was assessed using:
+
+Accuracy,
+
+Precision,
+
+Recall,
+
+F1 Score.
+
+
+These metrics ensure the model effectively balances false positives and false negatives, which is critical for churn intervention strategies.
+
+
+---
+
+📤 Business-Ready Outputs
+
+The final deliverable includes:
+
+Customer-level churn probabilities for unseen data,
+
+Exported in a format suitable for:
+
+CRM integration,
+
+Targeted retention campaigns,
+
+Pricing and contract optimization.
+
+
+
+
+---
+
+🔑 Key Business Insights
+
+Churn risk increases sharply as customers approach renewal.
+
+Price volatility and tariff complexity are associated with higher churn.
+
+Discount-dependent customers exhibit elevated attrition risk.
+
+Sales channel and contract origin materially influence retention.
+
+Consumption behavior and tenure are strong churn predictors.
+
+
+
+---
+
+🧠 Skills Demonstrated
+
+Consulting-style problem framing
+
+End-to-end data science workflow
+
+Business-driven feature engineering
+
+Pricing and elasticity analysis
+
+Predictive modeling and evaluation
+
+Insight-driven storytelling
+
